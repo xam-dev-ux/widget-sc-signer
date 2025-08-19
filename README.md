@@ -28,7 +28,7 @@ import { signSmartContractData } from '@wert-io/widget-sc-signer';
 const signedData = signSmartContractData(options, privateKey);
 ```
 
-Function **signSmartContractData** returns the given options object with an addition of a "**signature**" property. You can pass the result directly to [WertWidget initializer](https://www.npmjs.com/package/@wert-io/widget-initializer):
+Function **signSmartContractData** returns the given options object with an addition of a "**signature**" property. This function is meant to be executed **on the backend** to prevent your `private_key` from being exposed on the frontend. You can pass the result directly to [WertWidget initializer](https://www.npmjs.com/package/@wert-io/widget-initializer):
 
 ```javascript
 const wertWidget = new WertWidget({
