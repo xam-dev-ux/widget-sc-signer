@@ -20,11 +20,11 @@
   },
   "homepage": "https://github.com/wert-io/widget-sc-signer#readme",
   "dependencies": {
-    "@types/elliptic": "6.4.12",
     "buffer": "6.0.3",
     "elliptic": "6.5.4"
   },
   "devDependencies": {
+    "@types/elliptic": "6.4.12",
     "@typescript-eslint/eslint-plugin": "4.28.2",
     "@typescript-eslint/parser": "4.28.2",
     "eslint": "7.30.0",
