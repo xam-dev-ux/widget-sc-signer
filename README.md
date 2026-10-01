@@ -49,3 +49,9 @@ const wertWidget = new WertWidget({
 ### Private key
 
 Was given to you during your registration in the **Wert** system as a partner. If you don't have one, [contact us](https://wert.io/for-partners).
+
+### Notes on commodity_amount
+
+- `commodity_amount` supports a [maximum of 8 decimal places](https://docs.wert.io/docs/generate-signed-data). This library doesn't validate that for you, so signing an amount with more than 8 decimals will succeed locally but the signature won't match on verification, resulting in a [9004 error](https://docs.wert.io/docs/error-codes) ("Partner Data Not Verified By Signature").
+- If you pass `commodity_amount` as a number, very small values get serialized with `String()`, which can produce scientific notation (e.g. `0.00000001` becomes `"1e-8"`). If the widget later receives the decimal form of the same amount, the two strings won't match and verification will fail.
+- Safest approach: pass `commodity_amount` as a fixed-decimal string (e.g. `amount.toFixed(8)`), and use that exact same string when initializing the widget.
